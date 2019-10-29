@@ -6,8 +6,8 @@ const gravatar = require('gravatar')
 
 //加密
 const bcrypt = require("bcryptjs")
-const salt = bcrypt.genSaltSync(10);
-const hash = bcrypt.hashSync("B4c0/\/", salt);
+    // const salt = bcrypt.genSaltSync(10);
+    // const hash = bcrypt.hashSync("B4c0/\/", salt);
 
 //  测试: $router : /users/test
 router.get("/test", (req, res) => {
@@ -49,7 +49,6 @@ router.post("/login", (req, res) => {
     User.findOne({ email }).then(user => {
         if (!user)
             res.status(404).json({ email: "用户不存在!" })
-
         bcrypt.compare(password, user.password)
             .then(isMatch => {
                 if (isMatch) {
