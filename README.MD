@@ -6,3 +6,5 @@
 
 ## 加密/验证: bcrypt
 https://blog.csdn.net/duola8789/article/details/80873579
+
+## 头像: gravatar
