@@ -5,6 +5,8 @@ const config = require("../config")
 // Build the connection string
 
 // Create the database connection
+// const dbURI = "mongodb://localhost:27017/profile"
+// mongoose.connect(dbURI, config.options);
 mongoose.connect(config.dbURI, config.options);
 
 // CONNECTION EVENTS

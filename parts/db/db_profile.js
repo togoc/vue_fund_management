@@ -3,27 +3,28 @@ var mongoose = require("./mongoose")
 var Schema = mongoose.Schema
 
 //创建集合
-var userSchema = Schema({
-    name: {
+var profileSchema = Schema({
+    type: {
         type: String,
         default: "佚名"
     },
-    password: {
+    describe: {
         type: String,
         require: true
     },
-    identity: {
-        type: String,
-        default: "employee"
+    expend: {
+        type: Number,
+        require: true
     },
-    gender: {
-        type: String,
-        default: "男"
+    income: {
+        type: Number,
+        require: true
     },
-    avatar: {
-        type: String
+    cash: {
+        type: Number,
+        require: true
     },
-    email: {
+    remark: {
         type: String,
         default: "xxx@xxx.com"
     },
@@ -34,4 +35,4 @@ var userSchema = Schema({
 })
 
 
-module.exports = mongoose.model("users", userSchema)
+module.exports = mongoose.model("profile", profileSchema)

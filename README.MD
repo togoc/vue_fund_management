@@ -62,7 +62,8 @@
     }
    ```
    ```js
-   //router 接收
+   //get接收  请求必须带 key:Authorization value: "Bearer " + token 返回的内容
+   //否则 返回 "Unauthorized" 错误
    router.get("/current", passport.authenticate("jwt", { session: false }), (req, res) => {
     res.json(req.user) // 接收 passport done回调返回的 user 
         // res.json({ msg: "success" })

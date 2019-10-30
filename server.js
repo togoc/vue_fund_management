@@ -15,6 +15,7 @@ app.use(bodyparser.json())
 
 
 app.use("/users", require("./parts/router/user"))
+app.use("/profiles", require("./parts/router/profile"))
 
 
 
