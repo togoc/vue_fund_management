@@ -1,26 +1,16 @@
 const mongoose = require('mongoose');
 const db = mongoose.connection;
-
+const config = require("../config")
 
 // Build the connection string
-var dbURI = 'mongodb://localhost:27017/user';
-const options = {
-    useNewUrlParser: true //使用客户端
-        ,
-    useUnifiedTopology: true //报错
-        ,
-    authSource: "user",
-    user: "togoc",
-    pass: "tgc.123"
-}
 
 // Create the database connection
-mongoose.connect(dbURI, options);
+mongoose.connect(config.dbURI, config.options);
 
 // CONNECTION EVENTS
 // When successfully connected
 db.on('connected', function() {
-    console.log('Mongoose 开始连接 ' + dbURI);
+    console.log('Mongoose 开始连接 ' + config.dbURI);
 });
 
 // If the connection throws an error

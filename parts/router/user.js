@@ -2,9 +2,10 @@ const express = require("express")
 const User = require("../db/db_user")
 const router = express.Router()
 const gravatar = require('gravatar')
-
-
-//加密
+const jwt = require('jsonwebtoken')
+const config = require("../config")
+const passport = require("passport")
+    //加密
 const bcrypt = require("bcryptjs")
     // const salt = bcrypt.genSaltSync(10);
     // const hash = bcrypt.hashSync("B4c0/\/", salt);
@@ -52,12 +53,27 @@ router.post("/login", (req, res) => {
         bcrypt.compare(password, user.password)
             .then(isMatch => {
                 if (isMatch) {
-                    res.json({ msg: isMatch })
+                    const rule = { id: user.id, name: user.name, }
+                        // jwt.sign("规则", "加密名字", "过期时间", "箭头函数")
+                    jwt.sign(rule, config.secret, { expiresIn: 3600 }, (err, token) => {
+                            res.json({
+                                success: true,
+                                token: "Bearer " + token
+                            })
+                        })
+                        // res.json({ msg: isMatch })
                 } else {
                     res.status(400).json({ password: "密码错误!" })
                 }
             })
     })
+})
+
+//  登录: $router : /users/current
+// Private
+router.get("/current", passport.authenticate("jwt", { session: false }), (req, res) => {
+    res.json(req.user)
+        // res.json({ msg: "success" })
 })
 
 
