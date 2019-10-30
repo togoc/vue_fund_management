@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
     // const fs = require("fs")
-const port = process.env.USER ? 8080 : 5000
+const port = process.env.USER ? 5000 : 5000
 const bodyparser = require('body-parser');
 const passport = require("passport")
 app.use(passport.initialize())
