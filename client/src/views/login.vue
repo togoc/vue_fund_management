@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import jwt from "jwt-decode";
 export default {
   name: "login",
   data() {
@@ -65,7 +66,9 @@ export default {
       }
     };
   },
-  created: function() {},
+  created: function() {
+    delete localStorage.token;
+  },
   components: {},
   methods: {
     submitForm(formName) {
@@ -78,16 +81,32 @@ export default {
                 message: "登录成功",
                 type: "success"
               });
+              let { token } = res.data;
+              localStorage.setItem("token", token);
+              //解析token
+              let decode = jwt(token);
+              console.log( this.$store);
+              this.$store.dispatch("setAuthenticated", !this.isEmpty(decode));
+              this.$store.dispatch("setUser", decode);
               this.$router.push("/index");
             })
             .catch(err => {
-              this.$message({
-                message: "邮箱或密码错误",
-                type: "error"
-              });
+              console.log(err);
+              // this.$message({
+              //   message: "邮箱或密码错误",
+              //   type: "error"
+              // });
             });
         }
       });
+    },
+    isEmpty(value) {
+      return (
+        value === undefined ||
+        value === null ||
+        (typeof value === "object" && Object.keys(value).length === 0) ||
+        (typeof value === "string" && value.trim().length === 0)
+      );
     }
   }
 };

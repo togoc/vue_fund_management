@@ -58,7 +58,7 @@ router.post("/login", (req, res) => {
                 if (isMatch) {
                     const rule = { id: user.id, name: user.name, identity: user.identity, avatar: user.avatar }
                         // jwt.sign("规则", "加密名字", "过期时间", "箭头函数")
-                    jwt.sign(rule, config.secret, { expiresIn: 3600 }, (err, token) => {
+                    jwt.sign(rule, config.secret, { expiresIn: 10 }, (err, token) => {
                             res.json({
                                 success: true,
                                 token: "Bearer " + token

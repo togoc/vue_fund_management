@@ -2,7 +2,7 @@ import axios from 'axios'
 import { Loading } from 'element-ui'
 import { Message } from 'element-ui';
 import { request } from 'https'
-
+import router from './router/index'
 let loading
 
 function startLoading() {
@@ -19,9 +19,9 @@ function endLoading() {
 //请求拦截
 axios.interceptors.request.use(config => {
     startLoading();
-    if (localStorage.eleToken) {
+    if (localStorage.token) {
         //设置统一请求头
-        config.headers.Authorization = localStorage.eleToken
+        config.headers.Authorization = localStorage.token
     }
 
     return config;
@@ -41,7 +41,7 @@ axios.interceptors.response.use(response => {
     if (status == 401) {
         Message.error('token失效，请重新登录')
             //清楚token
-        localStorage.removeItem('eleToken')
+        localStorage.removeItem('token')
         router.push('/login ')
     }
 

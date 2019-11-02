@@ -106,7 +106,9 @@ export default {
       }
     };
   },
-  created: function() {},
+  created: function() {
+    delete localStorage.token;
+  },
   components: {},
   methods: {
     submitForm(formName) {

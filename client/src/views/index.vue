@@ -8,8 +8,13 @@
 <script>
 export default {
   name: "index",
-  components:{
-      
+
+  components: {},
+  data() {
+    return {};
+  },
+  created: function() {
+    
   }
 };
 </script>
