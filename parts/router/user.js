@@ -28,7 +28,7 @@ router.post("/register", (req, res) => {
                 email: req.body.email,
                 avatar,
                 identity: req.body.identity,
-                password: req.body.pwd
+                password: req.body.password
             })
             bcrypt.genSalt(10, function(err, salt) {
                 bcrypt.hash(newUser.password, salt, function(err, hash) {
@@ -45,12 +45,14 @@ router.post("/register", (req, res) => {
 
 //  登录: $router : /users/register
 router.post("/login", (req, res) => {
+    console.log(req.body)
     let email = req.body.email
-    let password = req.body.pwd
+    let password = req.body.password
         //数据库匹配
     User.findOne({ email }).then(user => {
+        console.log(user)
         if (!user)
-            res.status(404).json({ email: "用户不存在!" })
+            return res.status(404).json({ email: "用户不存在!" })
         bcrypt.compare(password, user.password)
             .then(isMatch => {
                 if (isMatch) {

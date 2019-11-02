@@ -1,6 +1,5 @@
 const express = require("express")
 const app = express()
-    // const fs = require("fs")
 const port = process.env.USER ? 5000 : 5000
 const bodyparser = require('body-parser');
 const passport = require("passport")
@@ -12,10 +11,11 @@ app.use(bodyparser.urlencoded({ extende: false }));
 app.use(bodyparser.json())
 
 
+//跨域
+// app.use(require('cors')());
 
-
-app.use("/users", require("./parts/router/user"))
-app.use("/profiles", require("./parts/router/profile"))
+app.use("/api/users", require("./parts/router/user"))
+app.use("/api/profiles", require("./parts/router/profile"))
 
 
 

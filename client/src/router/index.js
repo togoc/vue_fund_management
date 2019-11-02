@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import index from "../views/index"
 import Register from "../views/register"
+import Login from "../views/login"
 import notFond from '../views/404'
 Vue.use(VueRouter)
 
@@ -22,6 +23,10 @@ const routes = [{
     {
         path: '/register',
         component: Register
+    },
+    {
+        path: '/login',
+        component: Login
     },
     {
         path: '*',

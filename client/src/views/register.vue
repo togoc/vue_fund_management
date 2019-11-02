@@ -2,7 +2,7 @@
   <div class="register">
     <section class="form_container">
       <div class="manage_tip">
-        <span class="title">在线后台管理系统</span>
+        <span class="title">请注册</span>
         <el-form
           :model="registerUser"
           :rules="rules"
@@ -17,10 +17,10 @@
             <el-input v-model="registerUser.email" placeholder="请输入email"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop="password">
-            <el-input type="password" v-model="registerUser.password" placeholder="请输入密码"></el-input>
+            <el-input v-model="registerUser.password" placeholder="请输入密码"></el-input>
           </el-form-item>
           <el-form-item label="确认密码" prop="password2">
-            <el-input type="password" v-model="registerUser.password2" placeholder="请输入密码"></el-input>
+            <el-input v-model="registerUser.password2" placeholder="请输入密码"></el-input>
           </el-form-item>
           <el-form-item label="用户类型">
             <el-select v-model="registerUser.identity" placeholder="请选择身份">
@@ -106,15 +106,21 @@ export default {
       }
     };
   },
+  created: function() {},
   components: {},
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          // alert("submit!");
-        } else {
-          console.log("error submit!!");
-          return false;
+          this.$http
+            .post("/api/users/register", this.registerUser)
+            .then(res => {
+              this.$message({
+                message: "注册成功",
+                type: "success"
+              });
+            });
+          this.$router.push("/login");
         }
       });
     }
@@ -122,7 +128,38 @@ export default {
 };
 </script>
 
-<style  scoped>
+
+<style scoped >
+.register {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url(../assets/balloon_dest.jpg) no-repeat center center;
+  background-size: 100% 100%;
+}
+.form_container {
+  width: 370px;
+  height: 210px;
+  position: absolute;
+  top: 10%;
+  left: 34%;
+  padding: 25px;
+  border-radius: 5px;
+  text-align: center;
+}
+.form_container .manage_tip .title {
+  font-family: "Microsoft YaHei";
+  font-weight: bold;
+  font-size: 26px;
+  color: #fff;
+}
+.registerForm {
+  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px 40px 20px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 5px 10px #cccc;
+}
 .submit_btn {
   width: 100%;
 }

@@ -136,6 +136,10 @@ table {
     border-spacing: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
 .el-loading {
     position: absolute;
     z-index: 2000;
@@ -155,4 +159,17 @@ table {
     width: 100%;
     text-align: center;
     position: absolute;
+}
+
+.login_tips {
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding-bottom: 5%;
+}
+
+.login_tips a {
+    color: blue;
+    font-size: 14px;
 }

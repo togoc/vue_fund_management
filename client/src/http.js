@@ -8,44 +8,46 @@ let loading
 function startLoading() {
     loading = Loading.service({
         lock: true,
-        text: "加载中!",
-        background: "rgba(0,0,0,.2)"
+        text: '拼命加载中...',
+        background: 'rgba(0,0,0,0.7)'
     })
 }
 
 function endLoading() {
     loading.close()
 }
-
-//请求
+//请求拦截
 axios.interceptors.request.use(config => {
-        // 加载动画
-        startLoading()
-        return config
-    },
-    err => {
-        return Promise.reject(err)
+    startLoading();
+    if (localStorage.eleToken) {
+        //设置统一请求头
+        config.headers.Authorization = localStorage.eleToken
     }
-)
+
+    return config;
+}, error => { return Promise.reject(error) })
 
 
-//响应
+
+//响应拦截
 axios.interceptors.response.use(response => {
-        //结束动画
-        endLoading()
-        return response
-    },
-    err => {
-        Message.error(err.response.data)
-        return Promise.reject(err)
-    })
+    endLoading();
+    return response;
+}, error => {
+    endLoading();
+    // Message.error(error.response.data);
+    //获取错误状态码
+    const { status } = error.response
+    if (status == 401) {
+        Message.error('token失效，请重新登录')
+            //清楚token
+        localStorage.removeItem('eleToken')
+        router.push('/login ')
+    }
 
 
-
-
-
-
-
+    return Promise.reject(error)
+})
 
 
 
