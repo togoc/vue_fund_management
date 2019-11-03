@@ -6,6 +6,10 @@
 
 
 <style  scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
 .not-fond {
   width: 100%;
   height: 100%;

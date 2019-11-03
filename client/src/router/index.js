@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import index from "../views/index"
+import Index from "../views/index"
 import Register from "../views/register"
 import Login from "../views/login"
 import notFond from '../views/404'
+import Info from "../views/info"
 Vue.use(VueRouter)
 
 const routes = [{
@@ -17,8 +18,10 @@ const routes = [{
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: () =>
-            import ( /* webpackChunkName: "about" */ '../views/index.vue')
+        component: Index,
+        children: [
+            { path: "/info", name: "info", component: Info }
+        ]
     },
     {
         path: '/register',

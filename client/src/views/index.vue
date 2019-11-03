@@ -1,97 +1,46 @@
 <template>
-  <header class="head">
-    <div class="logo">
-      <img src="../assets/logo.png" alt />
-      <span>logo</span>
+  <div class="index">
+    <HeadNav></HeadNav>
+    <LeftMean></LeftMean>
+    <div class="rightContainer">
+      <router-view></router-view>
     </div>
-    <div class="islogin">
-      <img :src="user.avatar" alt />
-      <el-dropdown>
-        <el-button size="mini" type>
-          欢迎 
-          <span class="name">{{user.name}}</span>
-          <i class="el-icon-arrow-down el-icon--right"></i>
-        </el-button>
-        <el-dropdown-menu slot="dropdown" size="small">
-          <el-dropdown-item>
-            <router-link to="/register">个人信息</router-link>
-          </el-dropdown-item>
-          <el-dropdown-item>
-            <router-link to="/login">注销登录</router-link>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </div>
-  </header>
+  </div>
 </template>
 
-
 <script>
-export default {
-  name: "index",
-  computed: {
-    user() {
-      return this.$store.getters.user
-    }
-  },
-  components: {},
-  data() {
-    return {
-      name: "12"
-    };
-  },
+// @ is an alias to /src
+import HeadNav from "../components/header";
+import LeftMean from "../components/leftNav";
 
-  created: function() {
-    console.log((this.name = this.$store.state.user.name));
+export default {
+  name: "home",
+  components: {
+    HeadNav,
+    LeftMean
   }
 };
 </script>
 
-
-
-<style scoped >
-.head {
-  position: fixed;
+<style scoped>
+.index {
   width: 100%;
-  height: 60px;
-  background-color: rgb(172, 196, 188);
-  display: flex;
-  padding-left: 1%;
-  justify-content: space-between;
-}
-.head > div {
   height: 100%;
-}
-.islogin,
-.head {
-  margin-right: 2%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  overflow: hidden;
 }
-.logo img,
-.islogin img {
-  margin-right: 5%;
-  width: 50px;
-  height: 50px;
-}
-.logo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-.name{
-  color: blue;
-}
-.el-dropdown{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.rightContainer {
+  position: fixed;
+  top: 0;
+  left: 150px;
+  background-color: rgba(0, 0, 0, .2);
+  width: 100%;
   height: 100%;
-  white-space: nowrap;
+  overflow: auto;
 }
-.el-button{
-  border: 0;
-  background-color: rgba(231, 23, 23, 0)
+.el-col{
+ justify-content: center;
+ align-items: center;
 }
 </style>
