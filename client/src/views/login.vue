@@ -68,6 +68,7 @@ export default {
   },
   created: function() {
     delete localStorage.token;
+    this.$store.dispatch("clearCurrentState")
   },
   components: {},
   methods: {
@@ -85,17 +86,16 @@ export default {
               localStorage.setItem("token", token);
               //解析token
               let decode = jwt(token);
-              console.log( this.$store);
               this.$store.dispatch("setAuthenticated", !this.isEmpty(decode));
               this.$store.dispatch("setUser", decode);
               this.$router.push("/index");
             })
             .catch(err => {
               console.log(err);
-              // this.$message({
-              //   message: "邮箱或密码错误",
-              //   type: "error"
-              // });
+              this.$message({
+                message: "邮箱或密码错误",
+                type: "error"
+              });
             });
         }
       });
@@ -121,6 +121,7 @@ export default {
   background-image: url("../assets/balloon_dest.jpg");
   width: 100%;
   background-position: 100% 100%;
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   height: 100%;
   display: flex;
@@ -159,6 +160,20 @@ export default {
   width: 100%;
   margin: 10px 0px 20px 0px;
   text-align: center;
+}
+
+
+.login_tips {
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding-bottom: 5%;
+}
+
+.login_tips a {
+    color: blue;
+    font-size: 14px;
 }
 </style>
 

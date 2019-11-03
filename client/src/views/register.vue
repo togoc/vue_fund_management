@@ -31,6 +31,12 @@
           <el-form-item>
             <el-button type="primary" class="submit_btn" @click="submitForm('registerForm')">注册</el-button>
           </el-form-item>
+          <div class="login_tips">
+            <span>
+              已有账号?请直接
+              <router-link to="/login">登录</router-link>
+            </span>
+          </div>
         </el-form>
       </div>
     </section>
@@ -164,5 +170,17 @@ export default {
 }
 .submit_btn {
   width: 100%;
+}
+.login_tips {
+  width: 100%;
+  text-align: right;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding-bottom: 5%;
+}
+
+.login_tips a {
+  color: blue;
+  font-size: 14px;
 }
 </style>
