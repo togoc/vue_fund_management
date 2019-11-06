@@ -44,6 +44,9 @@ axios.interceptors.response.use(response => {
         localStorage.removeItem('token')
         router.push('/login ')
     }
+    if (status == 400&&error.response.data.msg) {
+        Message.error(error.response.data.msg)
+    }
 
 
     return Promise.reject(error)

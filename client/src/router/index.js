@@ -5,6 +5,8 @@ import Register from "../views/register"
 import Login from "../views/login"
 import notFond from '../views/404'
 import Info from "../views/info"
+import Form from "../views/form"
+import Home from '../views/home'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -20,7 +22,9 @@ const routes = [{
         // which is lazy-loaded when the route is visited.
         component: Index,
         children: [
-            { path: "/info", name: "info", component: Info }
+            {path:'',component:Home},
+            { path: "/info", name: "info", component: Info },
+            { path: "/form", name: "form", component: Form }
         ]
     },
     {

@@ -48,8 +48,6 @@ export default {
   height: 100%;
   box-sizing: border-box;
   padding-left: 15%;
-  padding-top: 60px;
-  /* padding: 16px; */
 }
 .row-bg {
   width: 100%;

@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
+  <div class="leftcontainar">
     <el-row>
       <el-col>
         <el-menu
-          default-active="2"
+          default-active=""
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
@@ -11,24 +11,17 @@
           text-color="#fff"
           active-text-color="#ffd04b"
         >
-          <el-submenu index="1">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>导航一</span>
-            </template>
-            <el-menu-item-group>
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
-              <el-menu-item index="1-3">选项3</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
+          <el-menu-item index="1">
+            <i class="el-icon-menu"></i>
+            <span slot="title"><router-link to="/form">资金管理</router-link></span>
+          </el-menu-item>
           <el-menu-item index="2">
             <i class="el-icon-menu"></i>
-            <span slot="title">导航二</span>
+            <span slot="title">人员管理</span>
           </el-menu-item>
           <el-menu-item index="3">
             <i class="el-icon-setting"></i>
-            <span slot="title">个人信息</span>
+            <span slot="title"><router-link to="/info">个人信息</router-link></span>
           </el-menu-item>
         </el-menu>
       </el-col>
@@ -53,13 +46,13 @@ export default {
 
 
 <style  scoped>
-.home {
-  background-image: url(../assets/sea.jpg);
+.leftcontainar {
+  background-color: #324057;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   box-sizing: border-box;
   padding-top: 60px;
-  width: 100%;
+  width: 150px;
   height: 100vh;
   position: fixed;
   left: 0;
@@ -70,4 +63,8 @@ export default {
   width: 150px;
   min-width: 150px;
 }
+.el-menu {
+  border: 0;
+}
+
 </style>

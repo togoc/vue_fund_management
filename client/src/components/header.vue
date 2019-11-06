@@ -1,5 +1,5 @@
 <template>
-  <div class="index">
+  <div class="header">
     <header class="head">
       <router-link to="/index">
         <div class="logo">
@@ -31,7 +31,6 @@
 
 <script>
 export default {
-  name: "index",
   computed: {
     user() {
       return this.$store.getters.user;
@@ -54,17 +53,20 @@ export default {
 
 <style scoped >
 .head {
-  z-index: 999999999;
+  z-index:11;
   box-sizing: border-box;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   height: 60px;
-  background-color: rgb(172, 196, 188);
+  background-color:#324057;
   display: flex;
   padding-left: 1%;
   justify-content: space-between;
+}
+.el-dropdown-menu a{
+color: #000000;
 }
 .head > div {
   height: 100%;
@@ -81,14 +83,17 @@ export default {
   display: inline-block;
   width: 50px;
   height: 50px;
+  margin: 5px;
 }
 .logo {
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-weight: bold;
 }
 .name {
   color: blue;
+  font-weight: bold;
 }
 .el-dropdown {
   display: flex;

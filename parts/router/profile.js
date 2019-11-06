@@ -16,9 +16,16 @@ router.post("/add", passport.authenticate("jwt", { session: false }), (req, res)
     if (req.body.income) profileFields.income = req.body.income
     if (req.body.cash) profileFields.cash = req.body.cash
     if (req.body.remark) profileFields.remark = req.body.remark
+    console.log(profileFields)
     new Profile(profileFields).save()
-        .then(profile => console.log(profile))
-    res.json({ msg: "success" })
+        .then(profile => {
+            res.json({ msg: "success" })
+            
+        }).catch(err=>{
+            res.status(400).json({
+                msg:"添加失败,请检查数据类型!",err
+            })
+        })
 })
 
 router.get("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
@@ -30,6 +37,17 @@ router.get("/:id", passport.authenticate("jwt", { session: false }), (req, res) 
             res.json(profile)
         }).catch(err => res.status(404).json(err))
 })
+
+router.get("/", passport.authenticate("jwt", { session: false }), (req, res) => {
+    console.log(req.url)
+    Profile.find()
+        .then(profile => {
+            if (!profile)
+                return res.status(404).json("没有匹配内容")
+            res.json(profile)
+        }).catch(err => res.status(404).json(err))
+})
+
 router.post("/edit/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
     const profileFields = {}
     if (req.body.type) profileFields.type = req.body.type

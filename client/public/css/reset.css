@@ -92,6 +92,10 @@ video {
     vertical-align: baseline;
 }
 
+a {
+    color: aliceblue;
+}
+
 
 /* HTML5 display-role reset for older browsers */
 
@@ -173,3 +177,5 @@ a {
     color: blue;
     font-size: 14px;
 }
+
+

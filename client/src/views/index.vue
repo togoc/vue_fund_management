@@ -31,16 +31,26 @@ export default {
   overflow: hidden;
 }
 .rightContainer {
-  position: fixed;
-  top: 0;
+  position: relative;
+  top: 60px;
   left: 150px;
-  background-color: rgba(0, 0, 0, .2);
+  background-image: url(../assets/sea.jpg);
   width: 100%;
+  vertical-align: baseline;
   height: 100%;
   overflow: auto;
 }
-.el-col{
- justify-content: center;
- align-items: center;
+
+@media screen and (max-width: 850px) {
+  .leftcontainar {
+    display: none;
+  }
+  .rightContainer {
+    left: 0px;
+  }
+}
+.el-col {
+  justify-content: center;
+  align-items: center;
 }
 </style>
