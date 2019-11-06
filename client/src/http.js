@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { Loading } from 'element-ui'
 import { Message } from 'element-ui';
-import { request } from 'https'
 import router from './router/index'
 let loading
 

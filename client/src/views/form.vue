@@ -67,7 +67,7 @@
         v-if="page.total>0"
       ></el-pagination>
     </div>
-    <edit :formData="formData" :dialog="dialog" @update="getProfiles"></edit>
+    <edit :formData="formData" :dialog="dialog" :title="title" @update="getProfiles"></edit>
   </div>
 </template>
 
@@ -91,11 +91,12 @@ export default {
         dialogTableVisible: false,
         dialogFormVisible: false
       },
-      form: {}
+      title:""
     };
   },
   methods: {
     handleEdit(index, row) {
+      this.title= "编辑"
       this.formData = {
         type: row.type,
         describe: row.describe,
@@ -153,6 +154,7 @@ export default {
       this.setPage()
     },
     add() {
+      this.title= "添加"
       this.formData = {
         type: "",
         describe: "",

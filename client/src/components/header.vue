@@ -3,7 +3,8 @@
     <header class="head">
       <router-link to="/index">
         <div class="logo">
-          <img src="../assets/logo.png" alt />logo
+          <!-- <img src="../assets/logo.png" alt /> -->
+          Logo
         </div>
       </router-link>
       <div class="islogin">
@@ -81,8 +82,8 @@ color: #000000;
 .logo img,
 .islogin img {
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   margin: 5px;
 }
 .logo {
