@@ -1,6 +1,6 @@
 <template>
   <div class="leftcontainar">
-    <el-row>
+    <el-row class="nav">
       <el-col>
         <el-menu
           default-active=""
@@ -65,6 +65,9 @@ export default {
 }
 .el-menu {
   border: 0;
+}
+.nav{
+  border-top: 1px solid #1F2D3D;
 }
 
 </style>

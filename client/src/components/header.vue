@@ -44,7 +44,7 @@ export default {
   },
 
   created: function() {
-    console.log((this.name = this.$store.state.user.name));
+   this.name = this.$store.state.user.name
   }
 };
 </script>

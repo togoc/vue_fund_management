@@ -145,16 +145,12 @@ export default {
       });
     },
     searchDate() {
-      let d = new Date();
-      let start = d.setTime(this.search_date[0]-8460000);
-      console.log(new Date(this.search_date[0]).getDate())
-      let end = d.setTime(this.search_date[1]);
+      let start = this.search_date[0].getTime()
+      let end =this.search_date[1].getTime()
       this.filterData = this.tableData.filter(val => {
-        console.log(val.date-start,end-val.date)
         return val.date > start && val.date < end;
       });
       this.setPage()
-      console.log(this.filterData);
     },
     add() {
       this.formData = {
@@ -189,6 +185,8 @@ export default {
   padding-right: 150px;
 }
 .select_add {
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
 }
