@@ -2,8 +2,9 @@ const path = require('path')
 const debug = process.env.NODE_ENV !== 'production'
 
 module.exports = {
-    outputDir: 'dist', // 构建输出目录
+    outputDir: '../public', // 构建输出目录
     assetsDir: 'assets', // 静态资源目录 (js, css, img, fonts)
+    publicPath: '/',
     lintOnSave: false, // 是否开启eslint保存检测，有效值：ture | false | 'error'
     runtimeCompiler: true, // 运行时版本是否需要编译
     transpileDependencies: [], // 默认babel-loader忽略mode_modules，这里可增加例外的依赖包名
@@ -12,6 +13,7 @@ module.exports = {
         if (debug) { // 开发环境配置
             config.devtool = 'cheap-module-eval-source-map'
         } else { // 生产环境配置
+            
         }
         // Object.assign(config, { // 开发生产共同配置
         //     resolve: {
@@ -41,7 +43,7 @@ module.exports = {
         port: 8080,
         https: false,
         hotOnly: false,
-        proxy: { // 配置跨域
+        proxy: { // 配置跨域(要重启端口才生效)
             '/api': {
                 target: 'http://localhost:5000',
                 ws: true,

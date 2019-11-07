@@ -7,8 +7,6 @@ const config = require("../config")
 const passport = require("passport")
     //加密
 const bcrypt = require("bcryptjs")
-    // const salt = bcrypt.genSaltSync(10);
-    // const hash = bcrypt.hashSync("B4c0/\/", salt);
 
 //  测试: $router : /users/test
 router.get("/test", (req, res) => {

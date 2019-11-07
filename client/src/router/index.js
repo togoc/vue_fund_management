@@ -9,35 +9,34 @@ import Form from "../views/form"
 import Home from '../views/home'
 Vue.use(VueRouter)
 
-const routes = [{
+const routes = [
+    {
         path: '/',
         redirect: '/index',
     },
     {
         path: '/index',
-        name: 'index',
-        // component: index
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
+        name: 'Index',
         component: Index,
         children: [
             {path:'',component:Home},
-            { path: "/info", name: "info", component: Info },
-            { path: "/form", name: "form", component: Form }
+            { path: "/info", name: "Info", component: Info },
+            { path: "/form", name: "Form", component: Form }
         ]
     },
     {
         path: '/register',
-        component: Register
+        component: Register,
+        name:"Register",
     },
     {
         path: '/login',
+        name:"Login",
         component: Login
     },
     {
         path: '*',
-        name: "404",
+        name: "notFond",
         component: notFond
     },
 ]

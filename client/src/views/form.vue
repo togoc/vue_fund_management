@@ -142,6 +142,7 @@ export default {
     getProfiles() {
       this.$http.get("/api/profiles").then(res => {
         this.tableData=this.filterData = res.data;
+         this.$store.dispatch("formData", res.data)
         this.setPage();
       });
     },

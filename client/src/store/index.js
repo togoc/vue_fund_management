@@ -11,11 +11,13 @@ const types = {
 const state = {
     isAuthenticated: false,
     user: {},
+    FORM_DATA: []
 }
 
 const getters = {
     isAuthenticated: state => state.isAuthenticated,
-    user: state => state.user
+    user: state => state.user,
+    FORM_DATA: state => state.FORM_DATA
 }
 
 const mutations = {
@@ -26,6 +28,11 @@ const mutations = {
     [types.SET_USER](state, user) {
         if (user) state.user = user
         else state.user = false
+    },
+    ['FORM_DATA'](state, data) {
+        if (data) {
+            state.FORM_DATA = data
+        }
     }
 }
 
@@ -39,6 +46,9 @@ const actions = {
     clearCurrentState: ({ commit }) => {
         commit(types.SET_AUTHENTICATED, false)
         commit(types.SET_USER, null)
+    },
+    formData({ commit }, data) {
+        commit('FORM_DATA', data)
     }
 }
 

@@ -78,3 +78,10 @@
      let avatar = gravatar.url(req.body.email, { s: '200', r: 'pg', d: 'mm' });
 ```
 可以连接GitHub头像的 [头像设置地址](http://cn.gravatar.com/)
+
+
+## 客户端 
+
+### 解析token
+* `import jwt from "jwt-decode";`
+* `let decode = jwt(token)let decode = jwt(token)`
