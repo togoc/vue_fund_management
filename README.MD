@@ -85,3 +85,37 @@
 ### 解析token
 * `import jwt from "jwt-decode";`
 * `let decode = jwt(token)let decode = jwt(token)`
+
+
+### vuex
+```js
+const state = {
+    isAuthenticated: false,
+    user: {},
+    FORM_DATA: []
+}
+```
+
+### 请求头
+```js
+//请求拦截//设置统一请求头
+axios.interceptors.request.use(config => {
+    startLoading();
+    if (localStorage.token) {
+        
+        config.headers.Authorization = localStorage.token
+    }
+    return config;
+}, error => { return Promise.reject(error) })
+```
+### 路由守卫
+```js
+router.beforeEach((to, from, next) => {
+    let isLogin = localStorage.getItem("token") ? true : false;
+    if (to.path == "/login" || to.path == '/register') {
+        next()
+    } else {
+        isLogin ? next() : next("/login")
+    }
+})
+```

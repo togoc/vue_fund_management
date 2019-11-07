@@ -15,14 +15,13 @@ function startLoading() {
 function endLoading() {
     loading.close()
 }
-//请求拦截
+//请求拦截//设置统一请求头
 axios.interceptors.request.use(config => {
     startLoading();
     if (localStorage.token) {
-        //设置统一请求头
+        
         config.headers.Authorization = localStorage.token
     }
-
     return config;
 }, error => { return Promise.reject(error) })
 
