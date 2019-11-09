@@ -27,17 +27,9 @@ app.use("/api/profiles", require("./parts/router/profile"))
 
 
 
-// app.get("/", (req, res) => {
-//     res.send("ok")
-// })
-
-
-
-
-
 
 
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`)
+    console.log(`资金管理 Server running on port ${port}`)
 })
