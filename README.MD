@@ -1,5 +1,11 @@
 # 管理系统
 
+<img  src="./images/index.png" alt="点击item">
+<div align="center">
+<img width="350" src="./images/login.png" alt="login-page">
+<img width="350"  src="./images/register.png" alt="register-page">
+</div>
+
 ## 服务器: node + express + mongoose
 * 基础内容---
 ## 测试: postman + nodemon
