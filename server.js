@@ -6,13 +6,13 @@ const passport = require("passport")
 
 
 
-//history mode 防止刷新空白
-// const history = require('connect-history-api-fallback');
-// history({
-//     index: '../public'
-//   });
-// app.use(history());
-// app.use("/",express.static("public"))
+// history mode 防止刷新空白
+const history = require('connect-history-api-fallback');
+history({
+    index: '../public'
+  });
+app.use(history());
+app.use("/",express.static("public"))
 
 app.all('*', function(req, res, next) {  
   res.header("Access-Control-Allow-Origin", "*");  
@@ -26,7 +26,6 @@ app.all('*', function(req, res, next) {
 
 app.use(passport.initialize())
 require("./parts/passport")(passport)
-
 app.use(bodyparser.urlencoded({ extende: false }));
 app.use(bodyparser.json())
 

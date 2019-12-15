@@ -9,6 +9,7 @@ import jwt from "jwt-decode";
 export default {
   name: "app",
   created: function() {
+    this.$router.push("/");
     if (localStorage.token) {
       let decode = jwt(localStorage.token);
       this.$store.dispatch("setAuthenticated", !this.isEmpty(decode));

@@ -76,7 +76,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$http
-            .post("/api/users/login", this.loginUser)
+            .post("/vuepro/users/login", this.loginUser)
             .then(res => {
               this.$message({
                 message: "登录成功",

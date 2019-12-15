@@ -72,7 +72,7 @@ export default {
         if (valid) {
           if (this.formData.id) {
             this.$http
-              .post("/api/profiles/edit/" + this.formData.id, this.formData)
+              .post("/vuepro/profiles/edit/" + this.formData.id, this.formData)
               .then(res => {
                 this.$message({
                   message: "修改成功",
@@ -80,7 +80,7 @@ export default {
                 });
               });
           } else {
-            this.$http.post("/api/profiles/add", this.formData).then(res => {
+            this.$http.post("/vuepro/profiles/add", this.formData).then(res => {
               console.log(res);
               this.$message({
                 message: "添加成功",

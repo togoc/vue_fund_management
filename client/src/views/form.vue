@@ -20,7 +20,7 @@
       border
       max-height="450"
     >
-      <el-table-column label="序号" width="100%" align="center" fixed type="index"></el-table-column>
+      <el-table-column label="序号" width="100%" align="center"  type="index"></el-table-column>
       <el-table-column label="创建日期" width="130" align="center">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
@@ -112,7 +112,7 @@ export default {
       };
     },
     handleDelete(index, row) {
-      this.$http.get("/api/profiles/delete/" + row._id).then(res => {
+      this.$http.get("/vuepro/profiles/delete/" + row._id).then(res => {
         this.$message({
           message: "删除成功",
           type: "success"
@@ -140,7 +140,7 @@ export default {
       });
     },
     getProfiles() {
-      this.$http.get("/api/profiles").then(res => {
+      this.$http.get("/vuepro/profiles").then(res => {
         this.tableData=this.filterData = res.data;
          this.$store.dispatch("formData", res.data)
         this.setPage();
