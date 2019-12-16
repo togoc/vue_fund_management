@@ -121,7 +121,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$http
-            .post("/vuepro/users/register", this.registerUser)
+            .post("/register", this.registerUser)
             .then(res => {
               this.$message({
                 message: "注册成功",

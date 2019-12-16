@@ -38,8 +38,8 @@ export default {
   data() {
     return {
       loginUser: {
-        email: "",
-        password: ""
+        email: "tgc@qq.com",
+        password: "1111"
       },
       rules: {
         email: [
@@ -76,7 +76,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           this.$http
-            .post("/vuepro/users/login", this.loginUser)
+            .post("/login", this.loginUser)
             .then(res => {
               this.$message({
                 message: "登录成功",
