@@ -51,13 +51,13 @@ const router = new VueRouter({
 })
 
 //路由守卫
-router.beforeEach((to, from, next) => {
-    let isLogin = localStorage.getItem("token") ? true : false;
-    if (to.path == "/login" || to.path == '/register') {
-        next()
-    } else {
-        isLogin ? next() : next("/login")
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     let isLogin = localStorage.getItem("token") ? true : false;
+//     if (to.path == "/login" || to.path == '/register') {
+//         next()
+//     } else {
+//         isLogin ? next() : next("/login")
+//     }
+// })
 
 export default router

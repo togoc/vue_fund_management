@@ -1,8 +1,15 @@
+/**https://vuex.vuejs.org/zh/
+ * 这里理解的有点错误
+ * state: 存储内容
+ * mutations: 接收及修改state, 组件里通过this.$store.commit('xx',arg)
+ * actions: 组件里通过this.$store.dispatch('xx',arg)执行xx再传递给mutations 函数(一般用来执行异步操作数据请求等,可以不用)
+ * getters: 相当于computed,返回想要的内容,而不改变state的内容, 可以通过this.$store.getter.xx获取数据(可以不用)
+ */
+
 import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
-
 const types = {
     SET_AUTHENTICATED: 'SET_AUTHENTICATED',
     SET_USER: 'SET_USER'
