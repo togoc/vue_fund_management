@@ -9,8 +9,7 @@ import Form from "../views/form"
 import Home from '../views/home'
 Vue.use(VueRouter)
 
-const routes = [
-    {
+const routes = [{
         path: '/',
         redirect: '/index',
     },
@@ -19,7 +18,7 @@ const routes = [
         name: 'Index',
         component: Index,
         children: [
-            {path:'',component:Home},
+            { path: '', component: Home },
             { path: "/info", name: "Info", component: Info },
             { path: "/form", name: "Form", component: Form }
         ]
@@ -27,11 +26,11 @@ const routes = [
     {
         path: '/register',
         component: Register,
-        name:"Register",
+        name: "Register",
     },
     {
         path: '/login',
-        name:"Login",
+        name: "Login",
         component: Login
     },
     {
@@ -51,13 +50,13 @@ const router = new VueRouter({
 })
 
 //路由守卫
-// router.beforeEach((to, from, next) => {
-//     let isLogin = localStorage.getItem("token") ? true : false;
-//     if (to.path == "/login" || to.path == '/register') {
-//         next()
-//     } else {
-//         isLogin ? next() : next("/login")
-//     }
-// })
+router.beforeEach((to, from, next) => {
+    let isLogin = localStorage.getItem("token") ? true : false;
+    if (to.path == "/login" || to.path == '/register') {
+        next()
+    } else {
+        isLogin ? next() : next("/login")
+    }
+})
 
 export default router
